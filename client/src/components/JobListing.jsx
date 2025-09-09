@@ -5,6 +5,7 @@ import JobCard from "./JobCard";
 
 const JobListing = () => {
     const { isSearched, searchFilter, setSearchFilter, jobs} = useContext(AppContext)
+    const [showFilter, setShowFilter] = useState(true)
     return (
         <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
             {/*Side bar*/}
@@ -30,6 +31,9 @@ const JobListing = () => {
                         </>
                     )
                 }
+                <buttton className='px-6 py-1.5 rounded border border-gray-400 lg:hidden'>
+                    {showFilter ? 'Close' : 'Filters'}
+                </buttton>
                 {/*Catagory Filter*/}
                 <div className="max-lg:hidden">
                     <h4 className="font-medium text-lg py-4">Search by Catagories</h4>
