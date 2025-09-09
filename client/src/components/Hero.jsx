@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 const Hero = () => {
     return (
        <div className="container 2xl:px-20 mx:auto my-10">
-        <div>
+        <div className="bg-gradient-to-r from-purple-400 to-blue-400">
           <h2>Discover Your Next Opportunity</h2>
           <p>Find your dream job in tech, marketing, design and more</p>
           <div>
