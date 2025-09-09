@@ -81,9 +81,17 @@ const JobListing = () => {
 
                 {/*Pagination*/}
                 {jobs.length > 0 && (
-                    <div> 
-                        <a href=''>
+                    <div className="flex items-center justify-center"> 
+                        <a href='#job-list'>
                            <img src={assets.left_arrow_icon} alt=''/> 
+                        </a>
+                        {Array.from({length: Math.ceil(jobs.length/6)}).map((_,index)=>(
+                            <a href='#job-list'>
+                                <button>{index+1}</button>
+                            </a>
+                        ))}
+                        <a href='#job-list'>
+                           <img src={assets.right_arrow_icon} alt=''/> 
                         </a>
                     </div>
                 )}
