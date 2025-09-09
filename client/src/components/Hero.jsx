@@ -19,6 +19,7 @@ const Hero = () => {
                 placeholder="Search For location" 
                 className="max-sm:text-xs p-2 runded outline-none w-full "/>
             </div>
+            <button>Search</button>
           </div>
         </div>
        </div>
