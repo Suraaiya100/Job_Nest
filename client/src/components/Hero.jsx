@@ -13,6 +13,12 @@ const Hero = () => {
                 placeholder="Search For jobs" 
                 className="max-sm:text-xs p-2 runded outline-none w-full "/>
             </div>
+            <div>
+                <img src={assets.location_icon} alt="" />
+                <input type='text'
+                placeholder="Search For location" 
+                className="max-sm:text-xs p-2 runded outline-none w-full "/>
+            </div>
           </div>
         </div>
        </div>
