@@ -15,12 +15,12 @@ const JobListing = () => {
                             <h3 className="font-medium text-lg mb-4 ">Current Search</h3>
                             <div className="mb-4 text-gray-600">
                                 {searchFilter.title && (
-                                    <span className="inline-flex items-center bg-purple-50 bordor border-blue-200 px-4 py-1.5 rounded">
+                                    <span className="inline-flex items-center bg-purple-100 bordor border-blue-300 px-4 py-1.5 rounded">
                                         {searchFilter.title}
                                         <img onClick={e=> setSearchFilter(prev=>({...prev,title:""}))} className="cursor-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
                                 {searchFilter.location && (
-                                    <span className="inline-flex items-center bg-blue-50 bordor border-purple-200 px-4 py-1.5 rounded">
+                                    <span className="ml-2 inline-flex items-center bg-blue-100 bordor border-purple-300 px-4 py-1.5 rounded">
                                         {searchFilter.location}
                                         <img onClick={e=> setSearchFilter(prev=>({...prev,location:""}))} className="cursor-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
@@ -28,6 +28,13 @@ const JobListing = () => {
                         </>
                     )
                 }
+                {/*Catagory Filter*/}
+                <div>
+                    <h4>Search by Catagories</h4>
+                    <ul>
+                        
+                    </ul>
+                </div>
 
             </div>
         </div>
