@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 const JobListing = () => {
-    const { isSearched, searchFilter } = useContext(AppContext)
+    const { isSearched, searchFilter, setSearchFilter } = useContext(AppContext)
     return (
         <div>
             {/*Side bar*/}
@@ -17,12 +17,12 @@ const JobListing = () => {
                                 {searchFilter.title && (
                                     <span>
                                         {searchFilter.title}
-                                        <img className="curson-pointer" src={assets.cross_icon} alt="" />
+                                        <img onClick={e=> setSearchFilter(prev=>({...prev,title:""}))} className="curson-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
                                 {searchFilter.location && (
                                     <span>
                                         {searchFilter.location}
-                                        <img className="curson-pointer" src={assets.cross_icon} alt="" />
+                                        <img onClick={e=> setSearchFilter(prev=>({...prev,location:""}))} className="curson-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
                             </div>
                         </>
