@@ -1,6 +1,11 @@
 import React from "react";
 import { assets } from "../assets/assets";
 const Hero = () => {
+
+    
+
+
+
     return (
        <div className="container 2xl:px-20 mx:auto my-10">
         <div className="bg-gradient-to-r from-purple-400 to-blue-400 text-white py-16 text-center mx-2 rounded-xl">
