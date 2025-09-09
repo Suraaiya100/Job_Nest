@@ -35,7 +35,7 @@ const JobListing = () => {
                     {showFilter ? 'Close' : 'Filters'}
                 </button>
                 {/*Catagory Filter*/}
-                <div className="max-lg:hidden">
+                <div className={showFilter ? "" : "max-lg:hidden"}>
                     <h4 className="font-medium text-lg py-4">Search by Catagories</h4>
                     <ul className="space-y-4 text-gray-600">
                         {
