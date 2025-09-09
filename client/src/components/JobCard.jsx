@@ -7,9 +7,9 @@ const JobCard = ({ job }) => {
                 <img className="h-8" src={assets.company_icon} alt="" />
             </div>
             <h4 className="font-medium text-xl mt-2">{job.title}</h4>
-            <div>
-                <span>{job.location}</span>
-                <span>{job.level}</span>
+            <div className='flex items-center gap-3 mt-2 text-xs'>
+                <span className="bg-blue-100 border border-purple-200 px-4 py-1.5 rounded">{job.location}</span>
+                <span className="bg-purple-100 border border-blue-200 px-4 py-1.5 rounded">{job.level}</span>
             </div>
             <p dangerouslySetInnerHTML={{ __html: job.description.slice(0, 150) }}></p>
             <div>
