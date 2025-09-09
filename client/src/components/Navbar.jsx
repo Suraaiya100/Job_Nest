@@ -5,6 +5,10 @@ const Navbar = () => {
        <div>
         <div>
             <img src={assets.logo} alt="" />
+            <div>
+                <button>Recruiter Login</button>
+                <button>Login</button>
+            </div>
         </div>
        </div>
     )
