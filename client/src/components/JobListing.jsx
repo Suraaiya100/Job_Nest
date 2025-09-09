@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState} from "react";
 import { AppContext } from "../context/AppContext";
 import { assets, JobCategories, JobLocations } from "../assets/assets";
 import JobCard from "./JobCard";
@@ -18,12 +18,12 @@ const JobListing = () => {
                             <h3 className="font-medium text-lg mb-4 ">Current Search</h3>
                             <div className="mb-4 text-gray-600">
                                 {searchFilter.title && (
-                                    <span className="inline-flex items-center bg-purple-100 bordor border-blue-300 px-4 py-1.5 rounded">
+                                    <span className="inline-flex items-center bg-purple-100 border border-blue-300 px-4 py-1.5 rounded">
                                         {searchFilter.title}
                                         <img onClick={e=> setSearchFilter(prev=>({...prev,title:""}))} className="cursor-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
                                 {searchFilter.location && (
-                                    <span className="ml-2 inline-flex items-center bg-blue-100 bordor border-purple-300 px-4 py-1.5 rounded">
+                                    <span className="ml-2 inline-flex items-center bg-blue-100 border border-purple-300 px-4 py-1.5 rounded">
                                         {searchFilter.location}
                                         <img onClick={e=> setSearchFilter(prev=>({...prev,location:""}))} className="cursor-pointer" src={assets.cross_icon} alt="" />
                                     </span>)}
@@ -31,9 +31,9 @@ const JobListing = () => {
                         </>
                     )
                 }
-                <buttton className='px-6 py-1.5 rounded border border-gray-400 lg:hidden'>
+                <button className='px-6 py-1.5 rounded border border-gray-400 lg:hidden'>
                     {showFilter ? 'Close' : 'Filters'}
-                </buttton>
+                </button>
                 {/*Catagory Filter*/}
                 <div className="max-lg:hidden">
                     <h4 className="font-medium text-lg py-4">Search by Catagories</h4>
