@@ -8,6 +8,7 @@ const Home = () => {
         <Navbar/>
         <Hero/>
         <JobListing/>
+        <ApplyDownLoad/>
        </div>
     )
 };
