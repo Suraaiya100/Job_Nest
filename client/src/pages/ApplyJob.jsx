@@ -23,9 +23,9 @@ const ApplyJob = () => {
 
     },[id,jobs])
     return JobData ? (
-        <div>
-
-        </div>
+        <>
+           <Navbar/>
+        </>
 
     ):(
        <Loading/>
