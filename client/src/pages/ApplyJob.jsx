@@ -29,7 +29,7 @@ const ApplyJob = () => {
     return JobData ? (
         <>
            <Navbar/>
-           <div>
+           <div className="min-h-screen flex flex-col py-10 container px-4 2xl:px-20 mx-auto" > 
             <div>
                 <div>
                     <div>
@@ -59,7 +59,7 @@ const ApplyJob = () => {
 
                          <div>
                            <button>Apply Now</button>
-                           <p>Posted{moment(JobData.data).fromNow()}</p>
+                           <p>Posted {moment (JobData.date).fromNow()}</p>
                          </div>
 
                 </div>
