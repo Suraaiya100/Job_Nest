@@ -38,6 +38,14 @@ const ApplyJob = () => {
                                     <img src={assets.suitcase_icon} alt=''/>
                                     {JobData.companyId.name}
                                 </span>
+                                <span>
+                                    <img src={assets.location_icon} alt=''/>
+                                    {JobData.location}
+                                </span>
+                                <span>
+                                    <img src={assets.person_icon} alt=""/>
+                                    {JobData.level}
+                                </span>
                             </div>
                         </div>
                     </div>
