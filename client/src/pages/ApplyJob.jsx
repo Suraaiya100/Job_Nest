@@ -54,6 +54,12 @@ const ApplyJob = () => {
                             </div>
                         </div>
                     </div>
+
+                         <div>
+                           <button>Apply Now</button>
+                           <p></p>
+                         </div>
+
                 </div>
             </div>
            </div>
