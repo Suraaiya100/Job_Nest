@@ -65,7 +65,7 @@ const ApplyJob = () => {
                     <div className="flex flex-col lg:flex-row justify-between items-start">
                         <div className="w-full lg:w-2/3 ">
                             <h2 className="font-bold text-2xl mb-4">Job description</h2>
-                            <div className="rich-text" dangerouslySetInnerHTML={{ __html: JobData.description }}/>
+                            <div className='rich-text' dangerouslySetInnerHTML={{ __html: JobData.description }}/>
                             <button className="bg-blue-600 p-2.5 px-10 text-white rounded mt-10">Apply Now</button>
                             
                         </div>
