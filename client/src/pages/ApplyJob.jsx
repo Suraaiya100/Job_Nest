@@ -46,6 +46,10 @@ const ApplyJob = () => {
                                     <img src={assets.person_icon} alt=""/>
                                     {JobData.level}
                                 </span>
+                                <span>
+                                    <img src={assets.money_icon} alt=""/>
+                                    CTC:{JobData.salary}
+                                </span>
                             </div>
                         </div>
                     </div>
