@@ -28,7 +28,9 @@ import { assets } from "../assets/assets";
                 <input onChange={e=> setPassword(e.target.value)} value={password} type='password' placeholder= 'Password' required/>
               </div>
              </>
-             
+             <button>
+                {state === 'Login' ? 'login' : 'create account'}
+             </button>
           </form>
         </div>
      
