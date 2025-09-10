@@ -8,7 +8,7 @@ import { assets } from "../assets/assets";
     const [image, setImage]= useState(false)
     const [isTextDataSubmited, setIsTextDataSubmited]= useState(false)
     return (
-        <div>
+        <div className="absolute top-0 left-0 right-0 bottom-0 z-0 backdrop-blur-sm bg-black/30 flex justify-center items-center ">
           <form action="">
             <h1>Recruiter {state}</h1>
             <p>Welcome back! Please sign in to continue</p>
