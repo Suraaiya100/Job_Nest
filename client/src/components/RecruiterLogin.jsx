@@ -7,9 +7,18 @@ const RecruiterLogin = () => {
     const [email, setEmail] = useState('')
     const [image, setImage] = useState(false)
     const [isTextDataSubmited, setIsTextDataSubmited] = useState(false)
+    
+    const onSubmitHandler = async(e) => {
+        e.preventDefault()
+        if (state === 'Sign Up' && !isTextDataSubmited) {
+            setIsTextDataSubmited(true)
+        }
+    }
+    
+    
     return (
         <div className="absolute top-0 left-0 right-0 bottom-0 z-0 backdrop-blur-sm bg-black/30 flex justify-center items-center ">
-            <form className="relative bg-white p-10 rounded-xl text-slate-500">
+            <form onSubmit={onSubmitHandler} className="relative bg-white p-10 rounded-xl text-slate-500">
                 <h1 className="text-center text-2xl text-neutral-700 font-medium">Recruiter {state}</h1>
                 <p className="text-sm">Welcome back! Please sign in to continue</p>
                 {state == 'Sign Up' && isTextDataSubmited
@@ -31,11 +40,12 @@ const RecruiterLogin = () => {
                             <input className="outline-none text-sm" onChange={e => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
                         </div>
                     </>}
+
                 <p className="text-sm text-blue-600 my-4 cursor-pointer">Forget Password</p>
 
 
-                <button className="bg-blue-600 w-full text-white py-2 rounded-full">
-                    {state === 'Login' ? 'login' : 'create account'}
+                <button type='submit' className="bg-blue-600 w-full text-white py-2 rounded-full">
+                    {state === 'Login' ? 'login' : isTextDataSubmited ? 'create account' : 'next'}
                 </button>
                 {
                     state === 'Login'
