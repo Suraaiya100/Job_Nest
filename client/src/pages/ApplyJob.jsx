@@ -14,9 +14,12 @@ const ApplyJob = () => {
          }
     }
     useEffect(() => {
-        fetchJob()
+        if(jobs.length >0){
+             fetchJob()
+        }
+        
 
-    },[id])
+    },[id,jobs])
     
     
     
