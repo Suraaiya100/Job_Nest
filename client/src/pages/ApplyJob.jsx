@@ -1,7 +1,7 @@
 import React , { useContext, useEffect, useState }from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import { assets, jobsData } from "../assets/assets";
+import { assets } from "../assets/assets";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 const ApplyJob = () => {
@@ -31,6 +31,9 @@ const ApplyJob = () => {
                 <div>
                     <div>
                         <img src={assets.company_icon} alt=''/>
+                        <div>
+                            <h1>{JobData.title}</h1>
+                        </div>
                     </div>
                 </div>
             </div>
