@@ -19,22 +19,23 @@ const AddJob = () => {
 
     },[])
     return (
-        <form>
-            <div>
-                <p>Job Title</p>
+        <form className="container p-4 flex flex-col w-full items-start gap-3">
+            <div className="w-full">
+                <p className="mb-2">Job Title</p>
                 <input type="text" placeholder='Type here'
                     onChange={e => setTitle(e.target.value)} value={title}
                     required
+                    className='w-full max-w-lg px-3 py-2 border-2 border-gray-300 rounded'
                 />
             </div>
-              <div>
-                <p>Job Description</p>
+              <div className="w-full max-w-lg">
+                <p className="my-2">Job Description</p>
                 <div ref={editorRef}>
 
                 </div>
               </div>
 
-            <div>
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:gap-8">
               <div>
                 <p>Job Catagory</p>
                 <select onChange={e=> setCategory(e.target.value)}>
@@ -68,6 +69,7 @@ const AddJob = () => {
                 <p>Job Salary</p>
                 <input onChange={e=> setSalary(e.target.value)} type="Number" placeholder="2500"/>
             </div>
+            <button>ADD</button>
         </form> 
 
         
