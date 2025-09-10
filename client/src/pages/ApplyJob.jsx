@@ -1,6 +1,7 @@
 import React , { useContext, useEffect, useState }from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { jobsData } from "../assets/assets";
 const ApplyJob = () => {
     const { id }= useParams()
     const [JobData, setJobData]= useState(null)
@@ -20,13 +21,15 @@ const ApplyJob = () => {
         
 
     },[id,jobs])
-    
-    
-    
-    return (
-       <div>
-           
-       </div>
+    return JobData ? (
+        <div>
+
+        </div>
+
+    ):(
+        <div>
+
+        </div>
     )
-};
+}
 export default ApplyJob
