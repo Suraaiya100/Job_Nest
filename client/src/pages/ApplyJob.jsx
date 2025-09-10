@@ -36,7 +36,7 @@ const ApplyJob = () => {
                             <div>
                                 <span>
                                     <img src={assets.suitcase_icon} alt=''/>
-                                    {JobData}
+                                    {JobData.companyId.name}
                                 </span>
                             </div>
                         </div>
