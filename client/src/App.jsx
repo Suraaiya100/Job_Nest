@@ -5,6 +5,7 @@ import ApplyJob from "./pages/ApplyJob";
 import Applications from "./pages/Applications";
 import RecruiterLogin from "./components/RecruiterLogin";
 const App = () => {
+  
   return (
   <div >
     <RecruiterLogin/>
