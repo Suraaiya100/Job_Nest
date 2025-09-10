@@ -27,7 +27,7 @@ const RecruiterLogin = () => {
                     <div className="flex items-center gap-4 my-10">
                         <label htmlFor="image">
                             <img className="w-16 rounded-full" src={assets.upload_area} alt=""/>
-                            <input text='file' id='image' hidden/>
+                            <input type="file" id="image" hidden/>
                         </label>
                         <p>Upload Company<br/>logo</p>
                     </div>
