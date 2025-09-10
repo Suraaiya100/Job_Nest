@@ -62,7 +62,7 @@ const RecruiterLogin = () => {
                         ? <p className="mt-5 text-center">Don't have an account? <span className="text-blue-600 cursor-pointer" onClick={() => setState("Sign Up")}>Sign Up</span></p>
                         : <p className="mt-5 text-center">Already have an account? <span className="text-blue-600 cursor-pointer" onClick={() => setState("Login")}>Login</span></p>
                 }
-
+                <img onClick={() => { }} className="absolute top-5 right-5 cursor-pointer" src={assets.cross_icon} alt="" />
 
 
             </form>
