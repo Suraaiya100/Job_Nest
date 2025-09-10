@@ -33,6 +33,12 @@ const ApplyJob = () => {
                         <img src={assets.company_icon} alt=''/>
                         <div>
                             <h1>{JobData.title}</h1>
+                            <div>
+                                <span>
+                                    <img src={assets.suitcase_icon} alt=''/>
+                                    {JobData}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
