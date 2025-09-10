@@ -17,7 +17,7 @@ const Applications = () => {
                                 ? <>
                                   <label className="flex items-center" htmlFor="resumeUpload">
                                     <p className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg mr-2">Select Resume</p>
-                                    <input id='resumeUpload' onChange={e=>setResume(e.target.files[0])} accept='application.pdf' type='file' hidden />
+                                    <input id='resumeUpload' onChange={e=>setResume(e.target.files[0])} accept='application/pdf' type='file' hidden />
                                     <img src={assets.profile_upload_icon} alt=''/>
                                   </label>
                                   <button onClick={e=>setIsEdit(false)} className="bg-purple-100 border border-purple-400 rounded-lg px-4 py-2">Save</button>
@@ -36,26 +36,30 @@ const Applications = () => {
                     <table className="min-w-full bg-white border rounded-lg">
                         <thead>
                             <tr>
-                                <th>Company</th>
-                                <th>Job Title</th>
-                                <th>Location</th>
-                                <th>Date</th>
-                                <th>Status</th>
+                                <th className="py-3 px-4 border-b text-left">Company</th>
+                                <th className="py-3 px-4 border-b text-left">Job Title</th>
+                                <th className="py-3 px-4 border-b text-left max-sm:hidden">Location</th>
+                                <th className="py-3 px-4 border-b text-left max-sm:hidden">Date</th>
+                                <th className="py-3 px-4 border-b text-left">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                           {jobsApplied.map((job,index)=> true ? (
                             <tr>
-                             <td>
-                                <td>
-                                    <img src={job.logo} alt=''/>
+                             
+                                <td className="py-3 px-4 flex items-center gap-2 border-b">
+                                    <img className="w-8 h-8" src={job.logo} alt=''/>
                                     {job.company}
                                 </td>
+                             
+                             <td className="py-2 px-4 border-b">{job.title}</td>
+                             <td className="py-2 px-4 border-b max-sm:hidden">{job.location}</td>
+                             <td className="py-2 px-4 border-b max-sm:hidden">{moment(job.date).format('ll')}</td>
+                             <td className="py-2 px-4 border-b">
+                                <span className={`${job.status === 'Accepted' ? 'bg-green-100': job.status ==='Rejected' ? 'bg-red-100': 'bg-blue-100'} px-4 py-1.5 rounded`}>
+                                    {job.status}
+                                </span>
                              </td>
-                             <td>{job.title}</td>
-                             <td>{job.location}</td>
-                             <td>{moment(job.date).format('ll')}</td>
-                             <td>{job.status}</td>
                             </tr>
                           ) : (null) )}  
                         </tbody>
