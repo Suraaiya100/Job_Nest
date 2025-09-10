@@ -30,7 +30,7 @@ const ApplyJob = () => {
             <div>
                 <div>
                     <div>
-                        <img src={assets.company_icon} alt=''/>
+                        <img src={JobData.companyId.image} alt=''/>
                         <div>
                             <h1>{JobData.title}</h1>
                             <div>
