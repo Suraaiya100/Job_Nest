@@ -66,7 +66,8 @@ const ApplyJob = () => {
                         <div>
                             <h2>Job description</h2>
                             <div dangerouslySetInnerHTML={{ __html: JobData.description }}/>
-                            <button>Apply Now</button>
+                            <button className="bg-blue-600 p-2.5 px-10 text-white rounded">Apply Now</button>
+                            
                         </div>
                     </div>
 
