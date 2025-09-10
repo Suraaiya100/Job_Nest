@@ -1,7 +1,7 @@
 import React , { useContext, useEffect, useState }from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import { jobsData } from "../assets/assets";
+import { assets, jobsData } from "../assets/assets";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 const ApplyJob = () => {
@@ -26,6 +26,15 @@ const ApplyJob = () => {
     return JobData ? (
         <>
            <Navbar/>
+           <div>
+            <div>
+                <div>
+                    <div>
+                        <img src={assets.company_icon} alt=''/>
+                    </div>
+                </div>
+            </div>
+           </div>
         </>
 
     ):(
