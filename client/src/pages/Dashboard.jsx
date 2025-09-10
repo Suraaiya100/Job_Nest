@@ -27,7 +27,7 @@ const Dashboard = () => {
 
               <div className="flex items-start">
                 {/* Sidebar */}
-                <div>
+                <div className="inline-block min-h-screen border-r-2">
                     <ul>
                         <NavLink to={'/dashboard/add-job'}>
                             <img src={assets.add_icon} alt="" />
@@ -45,6 +45,11 @@ const Dashboard = () => {
                         </NavLink>
                     </ul>
                 </div>
+                {/* Main Content */}
+                  <div>
+                    <Outlet/>
+                  </div>
+
 
               </div>
 
