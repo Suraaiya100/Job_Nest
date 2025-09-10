@@ -51,7 +51,7 @@ const RecruiterLogin = () => {
                         </div>
                     </>}
 
-                <p className="text-sm text-blue-600 my-4 cursor-pointer">Forget Password</p>
+                {state =='Login' && <p className="text-sm text-blue-600 my-4 cursor-pointer">Forget Password</p>}
 
 
                 <button type='submit' className="bg-blue-600 w-full text-white py-2 rounded-full">
