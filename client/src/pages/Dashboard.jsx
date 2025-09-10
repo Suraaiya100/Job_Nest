@@ -4,7 +4,7 @@ import { assets } from "../assets/assets";
 const Dashboard = () => {
     return (
         <div className='min-h-screen'>
-            <div>
+            <div className="shadow py-4">
                 <div>
                     <img src={assets.logo} alt=""/>
                     <div>
@@ -13,10 +13,8 @@ const Dashboard = () => {
                             <img src={assets.company_icon} alt=""/>
                             <div>
                                 <ul>
-                                    <li>Dashboard</li>
-                                    <li>Manage Jobs</li>
-                                    <li>Add Job</li>
-                                    <li>View Applications</li>
+                                    <li>Logout</li>
+                                    
                                 </ul>
                                 
                             </div>
