@@ -27,6 +27,7 @@ import { assets } from "../assets/assets";
                 <img src={assets.lock_icon} alt=''/>
                 <input className="outline-none text-sm" onChange={e=> setPassword(e.target.value)} value={password} type='password' placeholder= 'Password' required/>
               </div>
+              <p className="text-sm text-blue-600 my-4 cursor-pointer">Forget Password</p>
              </>
              <button className="bg-blue-600 w-full text-white py-2 rounded-full">
                 {state === 'Login' ? 'login' : 'create account'}
