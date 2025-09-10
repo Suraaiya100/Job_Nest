@@ -8,7 +8,9 @@
     const [isTextDataSubmited, setIsTextDataSubmited]= useState(false)
     return (
         <div>
-          Login Popup
+          <form action="">
+            <h1>Recruiter {state}</h1>
+          </form>
         </div>
      
         )
