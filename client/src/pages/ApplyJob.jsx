@@ -22,7 +22,7 @@ const ApplyJob = () => {
         
 
     },[id,jobs])
-    return false ? (
+    return JobData ? (
         <div>
 
         </div>
