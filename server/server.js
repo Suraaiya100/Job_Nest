@@ -17,7 +17,9 @@ if (Sentry.Handlers?.requestHandler) {
 }
 
 app.get('/', (req, res) => res.send("API WORKING"));
-
+app.get('/debug-sentry', function mainHandler(req, res) {
+    throw new Error("My first Sentry error!");
+})
 // Sentry error handler middleware (after all routes)
 if (Sentry.Handlers?.errorHandler) {
     app.use(Sentry.Handlers.errorHandler());
