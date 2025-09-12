@@ -4,7 +4,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './config/db.js';
 import * as Sentry from "@sentry/node";
-
+import { clerkWebhook } from './controllers/webhooks.js';
 const app = express();
 
 await connectDB();
@@ -30,6 +30,7 @@ app.use(function onError(err, req, res, next) {
     res.statusCode = 500;
     res.end((res.sentry || '') + "\n");
 });
+app.post('/webhook/clerk', clerkWebhook);
 
 const Port = process.env.Port || 5000;
 Sentry.setupExpressErrorHandler(app)
