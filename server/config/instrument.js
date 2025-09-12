@@ -9,7 +9,7 @@ Sentry.init({
     Sentry.mongooseIntegration()
 
   ],
-  tracesSampleRate: 1.0, // Capture 100% of the transactions
+//  tracesSampleRate: 1.0, // Capture 100% of the transactions
 });
 
 // No need to export anything; just import this file at the top of your server.js

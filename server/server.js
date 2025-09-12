@@ -30,6 +30,7 @@ app.use(function onError(err, req, res, next) {
 });
 
 const Port = process.env.Port || 5000;
+Sentry.setupExpressErrorHandler(app)
 app.listen(Port, () => {
     console.log(`Server is running on port ${Port}`);
 });
