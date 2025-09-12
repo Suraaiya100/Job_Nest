@@ -6,6 +6,8 @@ Sentry.init({
   sendDefaultPii: true,
   integrations: [
     nodeProfilingIntegration(),
+    Sentry.mongooseIntegration()
+
   ],
   tracesSampleRate: 1.0, // Capture 100% of the transactions
 });
