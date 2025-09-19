@@ -5,9 +5,10 @@ import {useNavigate} from 'react-router-dom'
 import { useState,useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 const ManageJobs = () => {
     const navigate = useNavigate()
-    const [jobs, setJobs] = useState([]);
+    const [jobs, setJobs] = useState(false);
     const {backendUrl, companyToken}= useContext(AppContext)
     // fetch applications data
     const fetchCompanyJobs= async()=>{
@@ -51,7 +52,11 @@ const ManageJobs = () => {
 
 
 
-    return (
+    return jobs? jobs.length===0 ? (
+    <div className="flex items-center justify-center h-[70vh]">
+        <p className="text-xl sm:text-2xl"> No Jobs Available or Posted</p>
+    </div>
+): (
         <div className="p-8 w-full">
             <div className="bg-white rounded shadow border mb-8">
                 <table className="w-full text-left">
@@ -85,7 +90,7 @@ const ManageJobs = () => {
                 Add new job
             </button>
         </div>
-    );
+    ):<Loading />;
 };
 
 export default ManageJobs;
