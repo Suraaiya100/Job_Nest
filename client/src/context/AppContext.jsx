@@ -98,6 +98,9 @@ export const AppContextProvider = (props) =>{
         companyToken, setCompanyToken,
         companyData, setCompanyData,
         backendURL
+        ,userData, setUserData,
+        userApplications, setUserApplications
+        ,fetchUserData 
 
     }
     return(<AppContext.Provider value={value}>
