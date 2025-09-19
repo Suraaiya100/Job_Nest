@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
 import generateToken from "../utils/generateToken.js";
 import Job from "../models/job.js";
+
 // Register company
 export const registerCompany = async (req, res) => {
     const { name, email, password } = req.body;
@@ -28,7 +29,7 @@ export const registerCompany = async (req, res) => {
         res.json({
             success: true,
             company: {
-                id: company._id,
+                _id: company._id,
                 name: company.name,
                 email: company.email,
                 image: company.image
@@ -42,11 +43,16 @@ export const registerCompany = async (req, res) => {
 };
 
 // Company login
+// Company login
 export const loginCompany = async (req, res) => {
     const { email, password } = req.body;
     try {
-        const company = await Company
-        if (bcrypt.compare(password, company.password)) {
+        const company = await Company.findOne({ email });
+        if (!company) {
+            return res.json({ success: false, message: "Company not found" });
+        }
+        const isMatch = await bcrypt.compare(password, company.password);
+        if (isMatch) {
             res.json({
                 success: true,
                 company: {
@@ -54,80 +60,103 @@ export const loginCompany = async (req, res) => {
                     name: company.name,
                     email: company.email,
                     image: company.image
-                }, 
+                },
                 token: generateToken(company._id)
             });
-        }
-        else{
+        } else {
             res.json({ success: false, message: "Invalid credentials" });
-        }}
-         catch (error) {
+        }
+    } catch (error) {
         res.json({ success: false, message: "Server error" });
-
     }
-    
-}
-
-export const getCompanyProfile = async (req, res) => {
-    
 };
 
-export const postJob = async (req, res) => {
-   const {title, description, salary, location, level, catgory} = req.body;
-    const companyID = req.company._id
+
+// Get company profile
+export const getCompanyProfile = async (req, res) => {
     try {
-        const newJob =  Job({
-            title, description, salary, location, companyID, date: Date.now(),level, category
+        const company = await Company.findById(req.params.id).select("-password");
+        if (!company) {
+            return res.json({ success: false, message: "Company not found" });
+        }
+        res.json({ success: true, company });
+    } catch (error) {
+        res.json({ success: false, message: "Server error" });
+    }
+};
+
+// Post a job
+export const postJob = async (req, res) => {
+    const { title, description, salary, location, level, category } = req.body;
+    const companyID = req.company._id;
+    try {
+        const newJob = new Job({
+            title,
+            description,
+            salary,
+            location,
+            companyID,
+            date: Date.now(),
+            level,
+            category
         });
         await newJob.save();
         res.json({ success: true, newJob });
     } catch (error) {
-        res.json({ success: false, message: "Server error"
-        })
+        res.json({ success: false, message: "Server error" });
     }
-    
-
 };
+
+// Get company data (for authenticated company)
 export const getCompanyData = async (req, res) => {
-      const company = req.company
-      try{
+    try {
+        const company = req.company;
         res.json({ success: true, company });
-      } catch (error) {
+    } catch (error) {
         res.json({ success: false, message: "Server error" });
-      }
-}
+    }
+};
 
+// Get applicants for a company's jobs (stub)
 export const getCompanyJobApplicants = async (req, res) => {
-    
+    // Implement as needed
+    res.json({ success: true, applicants: [] });
 };
 
+// Get all jobs posted by a company
 export const getCompanyPostedJobs = async (req, res) => {
-    try{
-        const companyID= req.company._id
-        const jobs = await Job.find({companyID});
-    
+    try {
+        const companyID = req.company._id;
+        const jobs = await Job.find({ companyID });
         res.json({ success: true, jobs });
-      } catch (error) {
+    } catch (error) {
         res.json({ success: false, message: "Server error" });
-      }
+    }
 };
 
+// Change application status (stub)
 export const ChangeApplicationStatus = async (req, res) => {
-}
+    // Implement as needed
+    res.json({ success: true, message: "Application status changed" });
+};
 
+// Change job visibility
 export const changeVisibility = async (req, res) => {
-    try{
-        const {id} = req.body;
+    try {
+        const { id } = req.body;
         const companyId = req.company._id;
-        const job= await Job.findById(id);
-        if(companyId.toString() !== job.companyID.toString()){
-            job.visible = !job.visible;
+        const job = await Job.findById(id);
+        if (!job) {
+            return res.json({ success: false, message: "Job not found" });
         }
-        
-        await job.save();
-        res.json({ success: true, job });
-        } catch (error) {
+        if (companyId.toString() === job.companyID.toString()) {
+            job.visible = !job.visible;
+            await job.save();
+            res.json({ success: true, job });
+        } else {
+            res.json({ success: false, message: "Not authorized" });
+        }
+    } catch (error) {
         res.json({ success: false, message: "Server error" });
-
     }
 };
