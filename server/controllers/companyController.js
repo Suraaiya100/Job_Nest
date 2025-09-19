@@ -50,8 +50,9 @@ export const loginCompany = async (req, res) => {
         if (!company) {
             return res.json({ success: false, message: "Company not found" });
         }
-        const isMatch = await bcrypt.compare(password, company.password);
-        if (isMatch) {
+        //const isMatch = 
+        if (await bcrypt.compare(password, company.password))
+        {
             res.json({
                 success: true,
                 company: {
