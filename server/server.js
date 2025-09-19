@@ -9,12 +9,14 @@ import companyRoutes from './routes/companyRoutes.js';
 import jobRoutes from './routes/jobRoutes.js'; // <-- Import jobRoutes
 import connectCloudinary from './config/cloudinary.js';
 import userRoutes from './routes/userRoutes.js';
+import {clerkMiddleware} from '@clerk/express';
 const app = express();
 
 await connectDB();
 await connectCloudinary();
 app.use(cors());
 app.use(express.json());
+app.use(clerkMiddleware());
 
 // Sentry request handler middleware (before all routes)
 if (Sentry.Handlers?.requestHandler) {
