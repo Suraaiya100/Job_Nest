@@ -7,7 +7,7 @@ import { AppContext } from "../context/AppContext";
 import { useEffect } from "react";
 const ManageJobs = () => {
     const navigate = useNavigate()
-    const [jobs, setJobs] = useState(false);
+    const [jobs, setJobs] = useState([]);
     const {backendUrl, companyToken}= useContext(AppContext)
     // fetch applications data
     const fetchCompanyJobs= async()=>{
@@ -24,6 +24,25 @@ const ManageJobs = () => {
             
         }
     }
+
+    //function to change job visibility
+    const changeJobVisibility= async(id)=>{
+        try {
+            const {data}= await axios.patch(backendUrl+'/api/company/change-job-visibility',
+                {id},
+                {headers:{token:companyToken}})
+            if(data.success){
+                toast.success(data.message)
+                fetchCompanyJobs()
+            }else{
+                toast.error(data.message)
+            }
+
+        } catch (error) {
+            
+        }
+    }
+
     useEffect(()=>{
         if (companyToken){
             fetchCompanyJobs()
@@ -47,7 +66,7 @@ const ManageJobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {manageJobsData.map((job, idx) => (
+                        {jobs.map((job, idx) => (
                             <tr key={idx} className="border-b hover:bg-gray-50">
                                 <td className="py-2 px-4">{idx + 1}</td>
                                 <td className="py-2 px-4">{job.title}</td>
@@ -55,7 +74,7 @@ const ManageJobs = () => {
                                 <td className="py-2 px-4">{job.location}</td>
                                 <td className="py-2 px-4">{job.applicants}</td>
                                 <td className="py-2 px-4">
-                                    <input type="checkbox" checked={job.visible} readOnly className="accent-blue-600 w-5 h-5" />
+                                    <input onChange={()=>changeJobVisibility(job._id)} type="checkbox" checked={job.visible} readOnly className="accent-blue-600 w-5 h-5" />
                                 </td>
                             </tr>
                         ))}
