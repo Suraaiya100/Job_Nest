@@ -128,7 +128,14 @@ export const getCompanyPostedJobs = async (req, res) => {
     try {
         const companyID = req.company._id;
         const jobs = await Job.find({ companyID });
-        res.json({ success: true, jobs });
+        const jobsData= await Promise.all(jobs.map(async(job)=>{
+            const applicants= await JobApplication.find({jobId:job._id})
+            return {...job.toObject(),applicants:applicants.length}
+        }
+        
+        
+        ))
+         res.json({ success: true, jobsData });
     } catch (error) {
         res.json({ success: false, message: "Server error" });
     }
