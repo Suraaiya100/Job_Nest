@@ -20,9 +20,9 @@ router.post("/login", loginCompany);
 router.get('/company', protectCompany, getCompanyData);
 router.get("/profile/:id", getCompanyProfile);
 router.post("/post-job", protectCompany, postJob);
-router.get("/applicants", protectCompany, getCompanyJobApplicants);
+router.get("/job-applications", protectCompany, getCompanyJobApplicants);
 router.get("/list-jobs", protectCompany, getCompanyPostedJobs);
-router.patch("/change-status", protectCompany, ChangeApplicationStatus);
+router.post("/change-application-status", protectCompany, ChangeApplicationStatus);
 router.patch("/change-visibility", protectCompany, changeVisibility);
 
 export default router;

@@ -29,7 +29,8 @@ const ManageJobs = () => {
     //function to change job visibility
     const changeJobVisibility= async(id)=>{
         try {
-            const {data}= await axios.patch(backendUrl+'/api/company/change-job-visibility',
+            const {data}= await axios.patch(
+                backendUrl+'/api/company/change-visibility', // <-- FIXED endpoint
                 {id},
                 {headers:{token:companyToken}})
             if(data.success){
@@ -40,7 +41,7 @@ const ManageJobs = () => {
             }
 
         } catch (error) {
-            
+            toast.error(error.message)
         }
     }
 
@@ -75,7 +76,7 @@ const ManageJobs = () => {
                             <tr key={idx} className="border-b hover:bg-gray-50">
                                 <td className="py-2 px-4">{idx + 1}</td>
                                 <td className="py-2 px-4">{job.title}</td>
-                                <td className="py-2 px-4">{moment(job.title).format('ll')}</td>
+                                <td className="py-2 px-4">{moment(job.date).format('ll')}</td>
                                 <td className="py-2 px-4">{job.location}</td>
                                 <td className="py-2 px-4">{job.applicants}</td>
                                 <td className="py-2 px-4">

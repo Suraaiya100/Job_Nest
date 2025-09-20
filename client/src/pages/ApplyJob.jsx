@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
+
 const ApplyJob = () => {
     const { id } = useParams();
     const { getToken } = useAuth();
@@ -22,17 +23,15 @@ const ApplyJob = () => {
 
     const fetchJob = async () => {
         try {
-            const {data}= axios.get(backendUrl+`/api/jobs/${id}`)
+            const {data} = await axios.get(backendUrl+`/api/jobs/${id}`)
         if(data.success){
             setJobData(data.job)
         }else{
             toast.error(data.message)
         }
-            
-        } catch (error) {
-            toast.error(error.message)
-        }
-        
+    } catch (error) {
+        toast.error(error.message)
+    }
     };
     const applyHandler = async () => {
         try {
@@ -127,7 +126,7 @@ const ApplyJob = () => {
                                 .filter(job => job._id !== JobData._id && job.companyId._id === JobData.companyId._id)
                                 .filter(job=> {
                                     //applied jobId
-                                    const appliedJobIds = new set(userApplications.map(app=> app.jobId && app.jobId._id));
+                                    const appliedJobIds = new Set(userApplications.map(app=> app.jobId && app.jobId._id));
                                     // true if not applied
                                     return !appliedJobIds.has(job._id);
                                 }).slice(0, 4)

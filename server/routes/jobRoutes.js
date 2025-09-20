@@ -1,13 +1,9 @@
 import express from "express";
-import { protect } from "../middleware/authMiddleware.js";
-import { getJobById, getJobs } from "../controllers/jobController.js"; 
+import { getJobs, getJobById } from "../controllers/jobController.js";
 
 const router = express.Router();
 
-// job by id
-router.get('/:id',protect,getJobById);
-
-// job data
-router.get('/', getJobs);
+router.get("/", getJobs); // GET /api/jobs
+router.get("/:id", getJobById); // GET /api/jobs/:id
 
 export default router;

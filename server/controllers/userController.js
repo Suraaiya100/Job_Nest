@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import Job from "../models/job.js";
+import Job from "../models/Job.js"; // Fix: Use correct case for Job model import
 import JobApplication from "../models/JobApplication.js";
 import {v2 as cloudinary} from "cloudinary";
 // Get user profile
@@ -30,7 +30,7 @@ export const applyforJob = async (req, res) => {
             return res.json({ success: false, message: "Job not found" });
         }
         await JobApplication.create({
-            companyId: jobData.companyID || jobData.companyId,
+            companyId: jobData.companyId, // <-- FIXED: use companyId
             userId,
             jobId,
             date: Date.now()
@@ -63,7 +63,7 @@ export const getUserJobApplications = async (req, res) => {
 // Update user resume
 export const updateUserResume = async (req, res) => {
     try {
-        const userId = req.auth.userId;
+        const userId = req.user.id; // <-- FIXED: use req.user.id
         const resumeFile = req.file;
         const userdata= await User.findById(userId)
         if(resumeFile){

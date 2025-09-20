@@ -41,8 +41,8 @@ app.use(function onError(err, req, res, next) {
 
 app.post('/webhook/clerk', clerkWebhook);
 app.use('/api/company', companyRoutes);
-app.use('/api/job', jobRoutes); // <-- Add job routes
-app.use('/api/user', userRoutes);
+app.use('/api/jobs', jobRoutes); // <-- Use plural for public job APIs
+app.use('/api/users', userRoutes); // <-- change from '/api/user'
 const Port = process.env.Port || 5000;
 app.listen(Port, () => {
     console.log(`Server is running on port ${Port}`);

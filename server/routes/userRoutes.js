@@ -1,4 +1,5 @@
 import express from "express";
+import { userProtect } from "../middleware/userAuth.js";
 
 import {
     applyforJob,
@@ -10,9 +11,9 @@ import upload from "../config/multer.js";
 
 const router = express.Router();
 
-router.get('/user', getUserData);
-router.post('/apply', applyforJob);
-router.get('/applications', getUserJobApplications);
-router.post('/update-resume', upload.single('resume'), updateUserResume);
+router.get('/user', userProtect, getUserData);
+router.post('/apply', userProtect, applyforJob);
+router.get('/applications', userProtect, getUserJobApplications);
+router.post('/update-resume', userProtect, upload.single('resume'), updateUserResume);
 
 export default router;
