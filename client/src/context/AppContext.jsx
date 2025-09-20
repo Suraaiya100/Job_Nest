@@ -34,7 +34,7 @@ export const AppContextProvider = (props) =>{
          } catch (error) {
             toast.error(error.message)
          }
-         setJobs(jobsData)
+         //setJobs(jobsData)
          
 
     }
