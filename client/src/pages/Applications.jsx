@@ -6,7 +6,10 @@ import Footer from "../components/Footer";
 import { useAuth, useUser } from "@clerk/clerk-react";
 const Applications = () => {
     const {user}= useUser()
-    const {getToken}= useAuth()
+    //const {getToken}= useAuth()
+    //added next two lines
+    console.log(auth)
+    const { getToken } = auth
     const [isEdit, setIsEdit] = useState(false)
     const [resume, setResume]= useState(null)
     const [backendUrl, userData,userApplications, fetchUserData, fetchUserApplications]= useContext(AppContext)
