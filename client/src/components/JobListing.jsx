@@ -9,7 +9,7 @@ const JobListing = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedCategories, setSelectedCategories] = useState([])
     const [selectedLocations, setSelectedLocations] = useState([])
-    const [filteredJobs, setFilteredJobs] = useState(jobs)
+    const [filteredJobs, setFilteredJobs] = useState(jobs||[])//recent change
     const handleCategoryChange = (category) => {
         setSelectedCategories(
             prev => prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
@@ -26,7 +26,8 @@ const JobListing = () => {
         const matchesLocation = (job) =>  selectedLocations.length === 0 || selectedLocations.includes(job.location)
         const matchesTitle = (job) =>  searchFilter.title === '' || job.title.toLowerCase().includes(searchFilter.title.toLowerCase()) 
         const matchesSearchLocation = (job) =>  searchFilter.location === '' || job.location.toLowerCase().includes(searchFilter.location.toLowerCase()) 
-        const newFilteredJobs = jobs.slice().reverse().filter(job => matchesCategory(job) && matchesLocation(job) && matchesTitle(job) && matchesSearchLocation(job))
+        //const newFilteredJobs = jobs.slice().reverse().filter(job => matchesCategory(job) && matchesLocation(job) && matchesTitle(job) && matchesSearchLocation(job))
+        const newFilteredJobs = (jobs || []).slice().reverse().filter(job => matchesCategory(job) && matchesLocation(job) && matchesTitle(job) && matchesSearchLocation(job))
         setFilteredJobs(newFilteredJobs)
         setCurrentPage(1)
    
