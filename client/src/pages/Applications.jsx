@@ -7,9 +7,8 @@ import { useAuth, useUser } from "@clerk/clerk-react";
 const Applications = () => {
     const {user}= useUser()
     //const {getToken}= useAuth()
-    //added next two lines
-    console.log(auth)
-    const { getToken } = auth
+    //added next 1 lines
+    const auth = useAuth();
     const [isEdit, setIsEdit] = useState(false)
     const [resume, setResume]= useState(null)
     const [backendUrl, userData,userApplications, fetchUserData, fetchUserApplications]= useContext(AppContext)
